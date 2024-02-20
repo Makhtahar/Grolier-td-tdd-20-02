@@ -46,8 +46,8 @@ it("3. should display all items in cart with reduction", function (done) {
 
     expect(c.showCart()).to.deep.equal([
       { id: 1, name: "chocolat", price: 16, quantity: 6 },
-      { id: 2, name: "miel", price: 30, quantity: 4 },
-      { id: 2, name: "tata", price: 10, quantity: 1 },
+      { id: 2, name: "miel", price: 30, quantity: 3 },
+      { id: 2, name: "miel", price: 10, quantity: 1 },
     ]);
     done();
   });

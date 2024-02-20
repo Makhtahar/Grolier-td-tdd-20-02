@@ -75,32 +75,28 @@ class Cart {
   }
   
   applyRemiseV2(remises) {
-    let tempRemises = [...remises];
-    const tempArticles = [];
-    this.articles.forEach((article) => {
-      const isRemise = tempRemises.find((r) => r.articleId === article.id);
-      if (isRemise) {
-        tempRemises = tempRemises.filter((r) => r.articleId !== article.id);
-        if (isRemise.amount >= article.price) {
-          return tempArticles.push(article);
-        }
-        const qte = article.quantity;
-        tempArticles.push({
-          ...article,
-          price: article.price - isRemise.amount,
-          quantity: 1,
-        });
-        tempArticles.push({ ...article, quantity: qte - 1 });
-      } else {
-        tempArticles.push(article);
-      }
-    });
+    //let tempRemises = [...remises];
+    //const tempArticles = [];
+    //this.articles.forEach((article) => {
+    //  const isRemise = tempRemises.find((r) => r.articleId === article.id);
+    //  if (isRemise) {
+    //    tempRemises = tempRemises.filter((r) => r.articleId !== article.id);
+    //    if (isRemise.amount >= article.price) {
+    //      return tempArticles.push(article);
+    //    }
+    //    const qte = article.quantity;
+    //    tempArticles.push({
+    //      ...article,
+    //      price: article.price - isRemise.amount,
+    //      quantity: 1,
+    //    });
+    //    tempArticles.push({ ...article, quantity: qte - 1 });
+    //  } else {
+    //    tempArticles.push(article);
+    //  }
+    //});
 
-    return tempArticles.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
-  }
-  
-  showCart(remises) {
-    return this.articles;
+    return tempArticles;
   }
 }
 
