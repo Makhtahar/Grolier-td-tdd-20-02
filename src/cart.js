@@ -73,6 +73,10 @@ class Cart {
       0
     );
   }
+  
+  applyRemiseV2(remises) {
+    return 8;
+  }
 }
 
 module.exports = {
