@@ -33,4 +33,22 @@ it("2. the price of the article can't be negative nor equal 0 after reduction", 
   //16*6 + 25*4 - nothing cause each amount is >= item.price
   expect(c.applyRemiseV2(r.remises)).to.equal(216);
 });
+
+it("3. should display all items in cart with reduction", function (done) {
+    const c = new Cart();
+    c.addArticle({ id: 1, name: "chocolat", price: 16, quantity: 5 })
+    .addArticle({ id: 1, name: "chocolat", price: 16, quantity: 1 })
+    .addArticle({ id: 2, name: "miel", price: 30, quantity: 4 });
+  
+
+    const r = new Remise();
+    r.addRemises({ id: 2, articleId: 2, amount: 20 });
+
+    expect(c.showCart()).to.deep.equal([
+      { id: 1, name: "chocolat", price: 16, quantity: 6 },
+      { id: 2, name: "miel", price: 30, quantity: 4 },
+      { id: 2, name: "tata", price: 10, quantity: 1 },
+    ]);
+    done();
+  });
 });

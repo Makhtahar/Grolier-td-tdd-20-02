@@ -98,6 +98,10 @@ class Cart {
 
     return tempArticles.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
   }
+  
+  showCart(remises) {
+    return this.articles;
+  }
 }
 
 module.exports = {
