@@ -6,7 +6,7 @@ class Cart {
   }
 
   get totalAMount() {
-    console.log(this.articles);
+    //console.log(this.articles);
     return this.articles.reduce(
       (acc, current) => acc + current.price * current.quantity,
       0
@@ -75,7 +75,27 @@ class Cart {
   }
   
   applyRemiseV2(remises) {
-    return 8;
+    let tempRemises = [...remises];
+    const tempArticles = [];
+    this.articles.forEach((article) => {
+      // console.log(article);
+      // console.log(tempRemises);
+      const isRemise = tempRemises.find((r) => r.articleId === article.id);
+      if (isRemise) {
+        tempRemises = tempRemises.filter((r) => r.articleId !== article.id);
+        const qte = article.quantity;
+        tempArticles.push({
+          ...article,
+          price: article.price - isRemise.amount,
+          quantity: 1,
+        });
+        tempArticles.push({ ...article, quantity: qte - 1 });
+      } else {
+        tempArticles.push(article);
+      }
+    });
+
+    return tempArticles.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
   }
 }
 

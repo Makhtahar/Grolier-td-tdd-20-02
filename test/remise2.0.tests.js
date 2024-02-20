@@ -12,9 +12,8 @@ describe("Testing the Remise function", function () {
     const r = new Remise();
     r.addRemises({ id: 2, articleId: 2, amount: 20 });
 
-    c.applyRemiseV2(r);
     //16*6 + 30*4 -20
-    expect(c.applyRemiseV2(r)).to.equal(196);
+    expect(c.applyRemiseV2(r.remises)).to.equal(196);
     done();
   });
 });
