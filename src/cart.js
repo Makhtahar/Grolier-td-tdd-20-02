@@ -78,11 +78,12 @@ class Cart {
     let tempRemises = [...remises];
     const tempArticles = [];
     this.articles.forEach((article) => {
-      // console.log(article);
-      // console.log(tempRemises);
       const isRemise = tempRemises.find((r) => r.articleId === article.id);
       if (isRemise) {
         tempRemises = tempRemises.filter((r) => r.articleId !== article.id);
+        if (isRemise.amount >= article.price) {
+          return tempArticles.push(article);
+        }
         const qte = article.quantity;
         tempArticles.push({
           ...article,

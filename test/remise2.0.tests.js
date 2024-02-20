@@ -27,7 +27,7 @@ it("2. the price of the article can't be negative nor equal 0 after reduction", 
   r.addRemises({ id: 1, articleId: 2, amount: 50 }).addRemises({
     id: 2,
     articleId: 1,
-    amount: 5,
+    amount: 16,
   });
 
   //16*6 + 25*4 - nothing cause each amount is >= item.price
